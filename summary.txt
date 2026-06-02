@@ -1,0 +1,43 @@
+Intro to js
+complex js scripts are loaded in another file, the benifit is that he browser will download and stores it in cache so that other files too can use it. That reduces traffic and makes pages faster.
+if src is set, script content will be ignored.
+ex:- <script src="script.js"> alert("hello"); <script> // alert will be ignored.
+newline is considered as ";" but sometimes may get error.
+for scripts to work in modern way we have to use "use strict" at the top in js file.
+comment... variable...
+                var let  const 
+re declaration.  Y.  N.    N. 
+re assign.       Y.  Y.    N. 
+can't start with digit , can have $,_ as special char no other.
+camelCase is commonly used (1st small other capital).
+we can assign value without using let also (older version)
+constants are(should) stored in uppercase variables.
+data types:-
+->number (integer,float)
+special numeric values (NaN.Infinity,-Infinity)
+NaN**0=1
+->BigInt (large numbers)
+->String ("Hello",'Hello',`Hello`)
+backticks allow to embed var and exp into String
+->Boolean (true/false)
+->null used to refer an non existing object
+->undefined (declared, but not assigned)
+->objects collection of data and more complex entities
+typeof() var_name (provide datatype)
+->alert,prompt,confirm:- for interaction with visitor
+alert- display message on window
+prompt- for taking input from user 
+confirm- question (ok:T , cancel:F)
+can't modify how it looks like.
+->type converstion can be done by using Data_Type(value) ex:- String(23)
++ concatenate (s+i=s, s+s=s) string+int
+->comma is used to separate expressions 
+a=(exp1,exp2)
+exp2 will be assigned to a if closed in paranthesis
+else if a=exp1,exp2 then exp1 will be assigned to a
+comparision operators
+conditional statements
+boolean operators:- && (the first false or the last one if all true) || (first true)
+exp1 ?? exp2 (coalescing operator) return exp1 if true else exp2
+loops while and for
+switch case 
