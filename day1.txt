@@ -1,9 +1,13 @@
 Intro to js
-complex js scripts are loaded in another file, the benifit is that he browser will download and stores it in cache so that other files too can use it. That reduces traffic and makes pages faster.
+complex js scripts are loaded in another file, the benifit is that the 
+browser will download and stores it in cache so that other files too 
+can use it. That reduces traffic and makes pages faster.
 if src is set, script content will be ignored.
-ex:- <script src="script.js"> alert("hello"); <script> // alert will be ignored.
+ex:- <script src="script.js"> alert("hello"); <script> // alert will be
+ignored.
 newline is considered as ";" but sometimes may get error.
-for scripts to work in modern way we have to use "use strict" at the top in js file.
+for scripts to work in modern way we have to use "use strict" at the 
+top in js file.
 comment... variable...
                 var let  const 
 re declaration.  Y.  N.    N. 
@@ -37,7 +41,15 @@ exp2 will be assigned to a if closed in paranthesis
 else if a=exp1,exp2 then exp1 will be assigned to a
 comparision operators
 conditional statements
-boolean operators:- && (the first false or the last one if all true) || (first true)
+boolean operators:- && (the first false or the last one if all true) 
+|| (first true)
 exp1 ?? exp2 (coalescing operator) return exp1 if true else exp2
 loops while and for
 switch case 
+functions 
+callback functions:- when functions are passed as argument inside a 
+function and expect it to be called back later if needed.
+function declaration :- separately created 
+function expression :- inside a variable 
+declaration works without any error if called before creation but 
+expression will give error as it is assigned  

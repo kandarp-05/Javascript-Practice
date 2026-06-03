@@ -1,0 +1,167 @@
+Arrow function:- simple and concise way of creating functions
+syntax: let func=(arg1,arg2,...,argN)=> expression;
+single argument can avoid parenthesis
+zero, two or more arg require paranthesis
+if function have multi line statements then we put it inside {} braces.
+variables are dynimically typed.
+commenting:-
+here’s a great rule about that: “if the code is so unclear that it 
+requires a comment, then maybe it should be rewritten instead”.
+->Object :- used to store collection of data and more complex entities.
+empty object :- let user= new Object(); or let user={};
+let object={
+    'name': "Kandarp",
+    'age': 21,
+    'city': 'Lucknow'
+};
+adding new value in object
+user.country='India';
+delete value by using delete keyword
+delete user.age;
+last property may end with comma, k/a trailing or hanging comma make 
+it easier to manage properties.
+for multi word properties "." doesn't work we have to use '[]' to 
+access
+ex:- user['likes mango']=true;
+reserved words can be used as key in object 
+ex:- let user={
+    let: 1,
+    for: 2,
+}
+there will be no error if we want to access any property which is not 
+defined yet, it will just return undefined
+we can use 'in' operator to check existence 
+ex:- 'age' in user; returns true/false
+we use 'in' operator bcz there might be property which stores undefined 
+in that case we can't find whether it exist or not by using '==='
+to iterate through obj we use in operator inside for loop
+ex:- for (let obj in user){
+    alert(obj);
+    alert(user[obj])
+}
+objects are ordered (will be displayed as created, except for int they 
+displayed in sorted order)
+objects are stored and copied "by reference".
+ex- let user={'name':'Kandarp'}
+let admin=user;
+now 2 variables are pointing to same object , changes will be reflected on both.
+user==admin or user===admin will return true;
+but,
+a={};
+b={};
+a==b will return false;
+const objects can be modified.
+value must point to the same reference but properties can be changed
+functions inside an object can't be cloned
+reachabilty concept is used for memory management.
+the values which are accessible and must be stored in memory.
+garbage collector keep monitoring objects and remove those which are unreachable.
+a function that is a property of an object is called method.
+let user={
+    'name':'Kandarp',
+    sayHi(){
+        alert("Hello, ",user.name);
+    }
+}
+-> 'this' is used to access the current object which is calling the method.
+ex- we can (should) call alert(this.name); why???
+If we decide to copy user to another variable, e.g. admin = user and 
+overwrite user with something else, then it will access the wrong object
+the value of 'this' is evaluated during the runtime.
+calling 'this' without object will return undefined and accessing any
+property will cause an error.
+
+constructor is used to create new instance of object
+-> ex- ;et user = new User('John');
+
+new empty obj created and assigned to this
+add new properties to this 
+return value of this.
+
+main purpose of constructor is to create reusable objects
+optional chaining (?.)
+we use this to refrain from error 
+for eg- user.address.street, if address is not defined then 
+undefined.street will give error
+we can use user.address? user.address.street : undefined
+we can use && operator 
+user.address && user.address.street
+and to use better way we go for optional chaining
+user?.address?.street  // no error, stops when undefined reached
+no further call to the right of ?. will be made
+
+methods of primitive data type
+toUpperCase()-> return str
+toFixed(n)-> round off to nth precision
+num.toString(base)
+to call a method directly on a no. we can use .. for it 
+ex- 123..toString(2)
+Math.floor()/ceil()/round()/trunc() remove decimal part, no round off
+->string // negative index possible
+str.length
+str[index] or str.at(index)
+for accessing -ve index we must use at() method, str[] will return undefined
+string immutable
+str.indexOf(substr,pos) default pos=0 ;  return index if found else -1
+str.lastIndexOf(substr,pos) search from end to begin
+str.includes(substr); true/false
+str.slice(start,end) return substr
+array
+for loop traversal 
+for (let elem of array){
+    alert(elem);
+}
+for (let i=0;i<arr.length;i++){
+    alert(arr[i]);
+}
+for (let elem in arr){
+    alert(elem);
+}
+splice[str,end, elems to replace] 
+ex- arr.splice[0,2,'hi','hello']
+
+filter(cond) returns arr of elems for which cond is true
+ex- let someUsers=user.filter(item=> item.id<3);
+push(...items) – adds items to the end,
+pop() – extracts an item from the end,
+shift() – extracts an item from the beginning,
+unshift(...items) – adds items to the beginning.
+splice(pos, deleteCount, ...items) – at index pos deletes deleteCount elements and inserts items.
+slice(start, end) – creates a new array, copies elements from index start till end (not inclusive) into it.
+concat(...items) – returns a new array: copies all members of the current one and adds items to it. If any of items is an array, then its elements are taken.
+To search among elements:
+
+indexOf/lastIndexOf(item, pos) – look for item starting from position pos, and return the index or -1 if not found.
+includes(value) – returns true if the array has value, otherwise false.
+find/filter(func) – filter elements through the function, return first/all values that make it return true.
+findIndex is like find, but returns the index instead of a value.
+To iterate over elements:
+
+forEach(func) – calls func for every element, does not return anything.
+To transform the array:
+
+map(func) – creates a new array from results of calling func for every element.
+sort(func) – sorts the array in-place, then returns it.
+reverse() – reverses the array in-place, then returns it.
+split/join – convert a string to array and back.
+
+map- same as dictionary in python
+
+new Map() – creates the map.
+map.set(key, value) – stores the value by the key.
+map.get(key) – returns the value by the key, undefined if key doesn’t exist in map.
+map.has(key) – returns true if the key exists, false otherwise.
+map.delete(key) – removes the element (the key/value pair) by the key.
+map.clear() – removes everything from the map.
+map.size – returns the current element count.
+map.entries() returns key,value pairs
+NaN can be considered as a key
+
+
+set:- no duplicate allowed
+new Set([iterable]) – creates the set, and if an iterable object is provided (usually an array), copies values from it into the set.
+set.add(value) – adds a value, returns the set itself.
+set.delete(value) – removes the value, returns true if value existed at the moment of the call, otherwise false.
+set.has(value) – returns true if the value exists in the set, otherwise false.
+set.clear() – removes everything from the set.
+set.size – is the elements count.
