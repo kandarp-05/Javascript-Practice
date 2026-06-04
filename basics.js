@@ -66,5 +66,51 @@
 // }
 // alert(filterRange(arr,1,4));
 
-let arr = ["nap", "teachers", "cheaters", "PAN", "ear", "era", "hectares"];
+// let arr = ["nap", "teachers", "cheaters", "PAN", "ear", "era", "hectares"];
+// let delay=1000;
+// let counter=0;
+// let timerId=setTimeout(function tick(){
+//     alert('Hi')
+//     if(counter>5){
+//         counter=0;
+//         delay*=2;
+//         console.log(delay);
+//     }
+//     counter++;
+//     timerId=setTimeout(tick,delay);
+// },delay);
+// let calc={
+//     add:(a,b)=>a+b,
+//     sub:(a,b)=>a-b,
+//     mul:(a,b)=>a*b,
+//     div:(a,b)=>a/b,
+// }
+// alert(calc.add(5,7))
+// alert(calc.sub(5,7))
+// alert(calc.mul(5,7))
+// alert(calc.div(5,7))
+
+// let BMICalc=(w,h)=> w/(h**2)
+// alert(BMICalc(67,1.78));
+
+// let arr=[1,2,3,4,5,6,7];
+// alert(arr.reduce(f1));
+// function f1(total,curr,ind,arr){
+//     return total+curr;
+// }
+// try{
+//     abccc;
+//     alert(abccc);
+// } catch (err){
+//     alert(err);
+// }
+
+let promise= new Promise(function(resolve, reject){
+    setTimeout(()=>resolve("Done"),2000);
+})
+
+promise.then(
+    result=> alert(result),
+    error=>alert(error)
+);
 

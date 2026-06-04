@@ -165,3 +165,4 @@ set.delete(value) – removes the value, returns true if value existed at the mo
 set.has(value) – returns true if the value exists in the set, otherwise false.
 set.clear() – removes everything from the set.
 set.size – is the elements count.
+

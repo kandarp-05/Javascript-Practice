@@ -1,0 +1,98 @@
+destructuring objects 
+let a,b,...c=['1','2','3','4','5'];
+a=1,b=2,c=[3,4,5]
+
+json :- stringify(obj) to convert into json  : obj to string 
+parse():- string to obj
+functions , symbols and prop storing undefined are ignored by stringify.
+recursion and stack
+generators, function hoisting iterators, scope 
+function-object:- f1.name give name of fn ie f1, f1.length give no. of arg. 
+setTimeout and setInterval:
+setTimeout runs a function after the interval of time (only once)
+setInterval runs function repeatedly after the interval of time.
+syntax: setTimeout(funct,duration);
+we shouldn't pass function with paranthesis otherwise we will get nothing.
+clearTimeout used to cancel the setTimeout.
+syntax:- setInterval(func,interval)
+caching:- avoids operations if result is already known.
+binding: tp avoid losing 'this'
+setTimeout(()=>user.sayHi(),2000)
+arrow function do not have their own 'this' and can't be used as a constructor.
+proto:- used for inheriting the properties of any other obj/class
+__proto__: parent_obj/class
+classes:-
+syntax:
+class cls_name{
+    constructor(){...};
+    method(){...}
+}
+error handling:-
+try{...} catch(err) {...} finally{...}
+for runtime error only
+it doesn't work for setInterval/setTimeout as engine has already left/ excuted 
+try catch block before function get executed
+err.name:- referenceError
+,err.message:- abccc is not defined.
+,err.stack:- referenceError: abccc is not defined at (...call stack)
+user defined error:
+throw new SyntaxError("Incomplete data:no name");
+
+variables are local inside try-catch block
+finally block will always execute even if return block excuted.
+callback and promises
+promises are special js objects that links the producing code and consuming code together.
+producing code may take its time to give the result but it will give it to 
+consumers
+let promise=new Promise(function(resolve,reject){
+    ...
+});
+the function passed to the new promise is called the executor.
+the executor obtains result then call either resolve or reject.
+if job finished -> resolve(value) , a value is returned;
+if job failed -> reject(error), error is returned;
+
+
+
+                          {state:fulfilled
+                          result:done}
+                        /
+executor {state:pending/
+        result:undefined}
+                       \
+                        \ 
+                          {state: rejected
+                          result:error}
+
+                          successfully completely
+let promise = new Promise(function(resolve, reject) {
+  // the function is executed automatically when the promise is constructed
+
+  // after 1 second signal that the job is done with the result "done"
+  setTimeout(() => resolve("done"), 1000);
+});
+state: pending->fulfilled
+result: undefined->done
+
+                          failed to fulfill
+
+let promise = new Promise(function(resolve, reject) {
+  // after 1 second signal that the job is finished with an error
+  setTimeout(() => reject(new Error("Whoops!")), 1000);
+});
+state:pending->rejected
+result:undefined->error
+
+consuming functions can be registered using .then and .catch
+
+syntax:
+promise.then(
+    function(result){...}
+    ,function(error){...}
+)
+1st arg run when promise is resolved , 2nd will run when promise is rejected
+
+.catch() is used when we are only interested in handling errors , here we 
+pass null as the 1st arg
+
+.finally() always run when the the promise is settled, either resolved or rejected.
