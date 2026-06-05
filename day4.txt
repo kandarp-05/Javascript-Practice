@@ -1,0 +1,180 @@
+promise API
+Promise.all:- used when we have many promises to execute in parallel and 
+wait until all of them are ready.
+syntax:- let promise=Promise.all(iterable);
+iterable is an array of promises and return a new promise
+the new promise is resolved when all lised promises are resolved, and 
+the array of their result become its result.
+Promise.allSettled:- wait for all promise to settle, regardless of the result.
+resulting array have {status:'fulfilled/rejected',value/reason:result/error}
+Promise.race:- wait for the first settled promise and get its result (or error)
+all other promises are ignored.
+syntax:- Promise.race([
+    new Promise((resolve,reject)=>setTimeout(()=> resolve(1),3000)),
+    new Promise((resolve,reject)=>setTimeout(()=> reject(new Error('whoops!')),2000))
+]).then(alert);
+
+Promise.any:- similar to race but waits for first fulfilled promise , gives AggregateError if no promise is fulfilled.
+syntax:- Promise.any([
+    new Promise((resolve,reject)=>setTimeout(()=> resolve(1),3000)),
+    new Promise((resolve,reject)=>setTimeout(()=> reject(new Error('whoops!')),2000))
+]).then(alert);
+Promise.resolve(value) – makes a resolved promise with the given value.
+Promise.reject(error) – makes a rejected promise with the given error.
+promisification:- conversion of a function that accepts a callback into a 
+function that returns a promise.
+used when the function call the callback only once.Further calls will be ignored
+
+Microtasks:- .then/.catch/.finally are always asynchronous
+these tasks need proper management, internal queue is specified for that named as 
+PromiseJobs or Microtasks queue.
+these tasks get executed one by one when the JS engine becomes free form 
+current code.
+if order matter then put the rest code too(needed to be dispayed) in .then().
+
+async/await:- easy to work with promises in comfortable way.
+async- placed before the function 
+ex- async function f1(){
+    return 1;
+}
+word 'async' before a function means a function always return a promise. 
+Other values are wrapped in a resolved promise automatically.
+
+await:-the await keyword makes js waits until that promise settles and returns
+its result.
+async function f() {
+
+  let promise = new Promise((resolve, reject) => {
+    setTimeout(() => resolve("done!"), 1000)
+  });
+
+  let result = await promise; // wait until the promise resolves (*)
+
+  alert(result); // "done!"
+}
+
+f();
+the function pauses at line where await is written and resumes when result is
+available ie. promise is settled.
+
+we can't use await in normal functions , we can use it only in async function
+if it’s an error, an exception is generated — same as if throw error were called
+at that very place.
+
+generator:- regular function returns only one,single value.
+syntax:- function* generateSeq(){
+    yield 1;
+    yield 2;
+    yield 3;
+}
+it doesn't run the code. instead it returns a special object 
+"generator object" to manage the execution.
+next( ) method is used , when called, it runs the execution until 
+the nearest yield statemet.then the function execution pauses, and the yield 
+value is passed to the outer code.
+next() contain value:yield value, done:true if function code is finished,
+otherwise false.
+
+----------------------------------------------####################################----------------------------------------------------
+Document:-
+in web browser, there's a root object called window it has 2 roles:
+-> it is a global obj for js code 
+-> it represent the 'browser window' and provides methods to control it.
+
+DOM:- Document object model represent all page content as object that can 
+be modified.
+document is main entry point to the page.
+
+BOM:- browser object model represent additional objects provided by the browser
+for working with everything except the document.
+function like alert,confirm,prompt are also part of BOM
+
+DOM Tree:- the DOM represent HTML as a tree structure of tags.
+An HTML/XML document is represented inside the browser as the DOM tree.
+
+Tags become element nodes and form the structure.
+Text becomes text nodes.
+…etc, everything in HTML has its place in DOM, even comments.
+
+walking through the DOM:
+for html-  document.documentElement
+for body- document.body
+for head- document.head
+An HTML/XML document is represented inside the browser as the DOM tree.
+use for..of 
+
+
+searching elements DOM:-
+getElement*,querySelector*
+
+document.getElementById(id):- easy to fetch element
+document.getElementById('btn').style.color='red'
+or 
+btn.style.color='red';
+id must be unique;
+getElementsByTagName(tag)// like p , h1, div : give all those tags'
+ByclassName(className)
+document.querySelectorAll() css-selector
+elem.hasAttribute(name) – checks for existence.
+elem.getAttribute(name) – gets the value.
+elem.setAttribute(name, value) – sets the value.
+
+elem.removeAttribute(name) – removes the attribute.
+
+css style changing:-
+document.getElementById(id).style.property= new style
+
+
+document.getAttribute('data-widget-name')
+
+browser-events:-
+mouse events,keyboard event,form element events,document events,
+CSS events.
+
+event-handlers:-An event handler is JavaScript code that runs when
+an event happens.
+onclick():- The user clicks an HTML element
+onchange():-An HTML element has been changed
+onmouseover():- The user moves the mouse over an HTML element
+onmouseout():- The user moves the mouse away from an HTML element
+
+we should use addEventListener() method to keep js and html seperated
+
+ex-
+<button id='mybtn'>Click me</button>
+<p id="Demo"></p>
+<script>
+const btn=document.getElementById('mybtn');
+btn.addEventListener('click',function () {
+    document.getElementById('demo').innerHTML=Date();
+});
+</script>
+
+A more detailed event loop algorithm (though still simplified compared to the
+ specification):
+
+Dequeue and run the oldest task from the macrotask queue (e.g. “script”).
+Execute all microtasks:
+While the microtask queue is not empty:
+Dequeue and run the oldest microtask.
+Render changes if any.
+If the macrotask queue is empty, wait till a macrotask appears.
+Go to step 1.
+To schedule a new macrotask:
+
+Use zero delayed setTimeout(f).
+That may be used to split a big calculation-heavy task into pieces, for the 
+browser to be able to react to user events and show progress between them.
+
+Also, used in event handlers to schedule an action after the event is fully 
+handled (bubbling done).
+
+To schedule a new microtask
+
+Use queueMicrotask(f).
+Also promise handlers go through the microtask queue.
+There’s no UI or network event handling between microtasks: they run 
+immediately one after another.
+
+So one may want to queueMicrotask to execute a function asynchronously, 
+but within the environment state.
