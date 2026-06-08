@@ -144,11 +144,45 @@
 //     alert(result);
 // }
 // f();
-async function wait(){
-    await new Promise(resolve=> setTimeout(resolve,1000 ));
-    return 10;
+// async function wait(){
+//     await new Promise(resolve=> setTimeout(resolve,1000 ));
+//     return 10;
+// }
+// function f(){
+//     wait().then(result=>alert(result))
+// }
+// f();
+// let c=1;
+// function f1(){
+//     document.body.style.background=c?'Black':'White';
+//     c=(c+1)%2;
+
+function getData(dataId){
+    return new Promise((resolve,reject)=>{
+        setTimeout(()=>{
+            console.log(dataId);
+            resolve("Success");
+        },2000);
+    })
+
 }
-function f(){
-    wait().then(result=>alert(result))
+
+// getData(1).then((res)=>{
+//     console.log(res);
+//     getData(2).then((res)=>{
+//         console.log(res);
+//         getData(3).then((res)=>{
+//             console.log(res);
+//         })
+//     })
+// })
+
+async function f1(){
+    await getData(1)
+    await getData(2)
+    await getData(3)
+    await getData(4)
 }
-f();
+
+
+

@@ -1,0 +1,15 @@
+event bubbling: when any event happens on an element, it first runs the handlers
+on it, then on its parent, then all the way up on other ancestors.
+
+event.target= doesn't changes throughout the process, the initiated one.
+this= is the current element the one that has the handler.
+eventobjects:- type,target,clientX,clientY
+
+js is prefered over inline event
+
+addEventListener(event,callback)
+removeEventListener(event,callback)
+when have to add more than 1 addEventListener
+
+for removing we have to give the same callback reference which we added
+inside addEventListener
