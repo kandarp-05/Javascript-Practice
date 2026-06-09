@@ -44,6 +44,7 @@ function isCollision(head, snake) {
   snake.forEach((segment) => {
     if (head.x == segment.x && head.y == segment.y) {
       gameOver();
+      return;
     }
   });
 }
@@ -71,6 +72,7 @@ function render() {
     isCollision(head, snake)
   ) {
     gameOver();
+    return;
   }
 
   if (head.x == food.x && head.y == food.y) {
