@@ -4,8 +4,44 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FinTrack</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    
+    <section class="transaction-form">
+            <form id="add-transaction" >
+                <p>Title</p>
+                <input type="text" id="title" name="title" placeholder="Enter the Title">
+                <p>Amount</p>
+                <input type="number" id="price" name="price" placeholder="Enter Amount">
+                <p>Category</p>
+                <input type="text" id="category" name="category" placeholder="Shopping/Traveling">
+                <p>Type</p>
+                <select name="type" id="type" >
+                    <option value="Income">Income</option>
+                    <option value="Expense">Expense</option>
+                </select>
+                <p>Date</p>
+                <input type="date" id="date">
+                <button class="add-btn" onclick="addTransaction(event);">Add Transaction</button>
+            </form>
+    </section>
+    <section class="display-transaction">
+        <div class="display-container">
+        <button class="display-btn">Display Transactions</button>
+        </div>
+    </section>
+    <section class="analytics">
+        <div class="analytics-container">
+            <button class="ttl-income-btn">Total Income</button>
+            <button class="ttl-expense-btn">Total Expense</button>
+            <button class="balance-btn">Balance</button>
+        </div>
+        <div class="display-analytics">
+        </div>
+    </section>
+    <section></section>
+    <section></section>
+    <script src="js/transaction.js"></script>
+    <script src="js/analytics.js"></script>
 </body>
 </html>

@@ -1,0 +1,207 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f4f6f9;
+    color: #333;
+    padding: 30px;
+}
+
+/* Main Layout */
+
+.transaction-form,
+.analytics, .display-transaction {
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    margin-bottom: 25px;
+}
+
+/* Form */
+
+#add-transaction {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#add-transaction p {
+    font-weight: bold;
+    margin-top: 8px;
+}
+
+input,
+select {
+    padding: 12px;
+    border: 1px solid #d0d7de;
+    border-radius: 8px;
+    font-size: 15px;
+}
+
+input:focus,
+select:focus {
+    outline: none;
+    border-color: #2563eb;
+}
+
+/* Buttons */
+
+button {
+    cursor: pointer;
+    border: none;
+    border-radius: 8px;
+    padding: 12px;
+    font-size: 15px;
+    transition: 0.3s;
+}
+
+.add-btn {
+    background: #2563eb;
+    color: white;
+    margin-top: 15px;
+}
+
+.add-btn:hover {
+    background: #1d4ed8;
+}
+
+.display-btn {
+    background: #10b981;
+    color: white;
+    margin-top: 15px;
+    width: 100%;
+}
+
+.display-btn:hover {
+    background: #059669;
+}
+
+/* Analytics */
+
+.analytics-container {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.ttl-income-btn {
+    background: #16a34a;
+    color: white;
+    flex: 1;
+}
+
+.ttl-expense-btn {
+    background: #dc2626;
+    color: white;
+    flex: 1;
+}
+
+.balance-btn {
+    background: #f59e0b;
+    color: white;
+    flex: 1;
+}
+
+/* Transactions */
+
+.display-container ol {
+    list-style: none;
+    margin-top: 20px;
+}
+
+.display-container ul {
+    list-style: none;
+    background: white;
+    border-left: 5px solid #2563eb;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.display-container li {
+    padding: 5px 0;
+}
+
+/* Dynamic Data Styling */
+
+.title {
+    font-size: 18px;
+    font-weight: bold;
+    color: #111827;
+}
+
+.price {
+    font-size: 17px;
+    font-weight: bold;
+    color: #16a34a;
+}
+
+.category {
+    color: #6b7280;
+}
+
+.type {
+    font-weight: bold;
+}
+
+.date {
+    color: #6b7280;
+}
+
+/* Dynamic Buttons */
+
+.btn {
+    margin-top: 12px;
+    margin-right: 10px;
+    padding: 10px 15px;
+}
+
+.btn:first-of-type {
+    background: #f59e0b;
+    color: white;
+}
+
+.btn:last-of-type {
+    background: #dc2626;
+    color: white;
+}
+
+.btn:hover {
+    opacity: 0.9;
+}
+
+/* Analytics Result */
+
+.display-analytics {
+    margin-top: 20px;
+    min-height: 60px;
+    padding: 15px;
+    border-radius: 10px;
+    background: #eef2ff;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+/* Responsive */
+
+@media (max-width: 768px) {
+
+    body {
+        padding: 15px;
+    }
+
+    .analytics-container {
+        flex-direction: column;
+    }
+
+    .btn {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+}
